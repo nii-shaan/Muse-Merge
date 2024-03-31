@@ -56,7 +56,6 @@ function YourPosts() {
             {/* {console.log(data)}
             {console.log(service.getFilePreview(data.featured_image))} */}
             {/* <Link to={`/edit-post/${data.$id}`} className="w-full h-full flex"> */}
-           
 
             <div className=" w-[30%] h-[75%]  mr-4 rounded-xl flex items-center">
               <div
@@ -101,15 +100,14 @@ function YourPosts() {
             <div
               id="editDelete"
               className="w-[20%] h-full flex items-center justify-end gap-3 sm:flex-col sm:justify-center  sm:ml-3 "
-              
             >
               <Link to={`/edit-post/${data.$id}`}>
-              <Button
-                type="primary"
-                className="px-4 py-2 flex items-center justify-center sm:px-2 sm:py-1"
-              >
-                Edit
-              </Button>
+                <Button
+                  type="primary"
+                  className="px-4 py-2 flex items-center justify-center sm:px-2 sm:py-1"
+                >
+                  Edit
+                </Button>
               </Link>
               <Button
                 type="primary"
@@ -120,7 +118,6 @@ function YourPosts() {
                 Delete
               </Button>
             </div>
-           
           </div>
         ))}
 

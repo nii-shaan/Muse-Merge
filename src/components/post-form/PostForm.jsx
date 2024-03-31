@@ -166,13 +166,15 @@ function PostForm({ post }) {
           />
 
           {post && (
-            <div className="w-full mb-4">
-              <img
-                src={service.getFilePreview(post.featured_image)}
-                alt={post.title}
-                className="rounded-lg"
-              />
-            </div>
+            <div
+              id="featuredImage"
+              className="w-[100px] h-[100px] bg-contain bg-no-repeat   rounded-xl sm:h-[70px] sm:w-[70px] sm:mt-2"
+              style={{
+                backgroundImage: `url("${
+                  service.getFilePreview(post.featured_image).href
+                }")`,
+              }}
+            ></div>
           )}
         </div>
       </div>
