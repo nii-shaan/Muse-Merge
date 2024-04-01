@@ -95,7 +95,11 @@ function Signup() {
                           matchPattern: (value) =>
                             /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/.test(
                               value
-                            ) || "Email Address is not valid!",
+                            ) || toast.error("Invalid email address!", {
+                              position: "top-center",
+                              autoClose: 4000,
+                              pauseOnHover: false,
+                            }),
                         },
                       })}
                     />
@@ -115,6 +119,18 @@ function Signup() {
                       className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       {...register("password", {
                         required: true,
+                        validate: {
+                          minLength: (value) =>
+                            value.length >= 8 ||
+                            toast.error(
+                              "Password must be at least 8 characters long!",
+                              {
+                                position: "top-center",
+                                autoClose: 4000,
+                                pauseOnHover: false,
+                              }
+                            ),
+                        },
                       })}
                     />
                   </div>
