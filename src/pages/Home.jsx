@@ -29,7 +29,7 @@ function Home() {
 
   if (status) {
     return (
-      <div className="bg-[#151515] w-full min-h-[800px] text-white flex flex-wrap px-5">
+      <div className="bg-[#151515] w-full min-h-[800px] text-white flex flex-wrap px-5 sm:justify-center">
         {posts.map((post) => (
           <div
             key={post.$id}
