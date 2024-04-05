@@ -50,7 +50,8 @@ function PostForm({ post }) {
       });
 
       if (dbPost) {
-        navigate(`/post/${dbPost.$id}`);
+        navigate(`/yourposts`);
+        toast.success("Post updated successfully", { position: "top-center" });
       }
     } else {
       console.log(userData);
@@ -72,7 +73,7 @@ function PostForm({ post }) {
 
           if (dbpost) {
             toast.success("Upload Sucessfull", { position: "top-center" });
-            // TODO:   navigate(`/post/${dbpost.$id}`);
+            navigate(`/yourposts`);
           } else {
             toast.error("Error posting, Maybe you wrote more than 255 char?", {
               position: "top-center",

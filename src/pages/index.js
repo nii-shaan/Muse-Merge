@@ -7,7 +7,8 @@ import Loader from "./Loader";
 import Header from "./header/Header";
 import Footer from "./footer/Footer";
 import Logout from "./header/Logout";
-import Post from "./Post";
+import Post from "./Post";  
+import EditPost from "./EditPost";
 
 
 
@@ -22,4 +23,5 @@ export {
   Footer,
   Logout,
   Post,
+  EditPost
 };

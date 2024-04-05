@@ -9,7 +9,14 @@ import {
   createRoutesFromElements,
   createBrowserRouter,
 } from "react-router-dom";
-import { Addpost, YourPosts, Home, Login, Signup } from "./pages/index.js";
+import {
+  Addpost,
+  YourPosts,
+  Home,
+  Login,
+  Signup,
+  EditPost,
+} from "./pages/index.js";
 import { RouterProvider } from "react-router-dom";
 import Protected from "./components/AuthLayout.jsx";
 
@@ -32,6 +39,14 @@ const router = createBrowserRouter(
           <Protected>
             {" "}
             <YourPosts />
+          </Protected>
+        }
+      />
+      <Route
+        path="/edit-post/:slug"
+        element={
+          <Protected>
+            <EditPost />
           </Protected>
         }
       />
