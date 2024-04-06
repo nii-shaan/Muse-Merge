@@ -13,12 +13,12 @@ import "react-quill/dist/quill.snow.css";
 
 function PostForm({ post }) {
   const [currentUser, setCurrentUser] = useState("");
-  const [userMail,setUserMail] = useState("")
+  const [userMail, setUserMail] = useState("");
   console.log(userMail);
 
   useEffect(() => {
     authService.getCurrentUser().then((data) => setCurrentUser(data.$id));
-    authService.getCurrentUser().then((data)=>setUserMail(data.email))
+    authService.getCurrentUser().then((data) => setUserMail(data.email));
   }, []);
 
   const { register, handleSubmit, watch, setValue, control, getValues } =
@@ -53,27 +53,35 @@ function PostForm({ post }) {
         navigate(`/post/${dbPost.$id}`);
       }
     } else {
+      console.log(userData);
       const file = await service.uploadFile(
         data.image[0]
           ? data.image[0]
           : toast.error("File upload failed", { position: "top-center" })
       );
 
-      if (file) {
-        const fileId = file.$id;
-        data.featured_image = fileId;
-        const dbpost = await service.createPost({
-          ...data,
-          user_id: userData.$id,
-          user_mail:userMail
-        });
+      if (userData) {
+        if (file) {
+          const fileId = file.$id;
+          data.featured_image = fileId;
+          const dbpost = await service.createPost({
+            ...data,
+            user_id: userData.$id,
+            user_mail: userMail,
+          });
 
-        if (dbpost) {
-          toast.success("Upload Sucessfull", { position: "top-center" });
-          // TODO:   navigate(`/post/${dbpost.$id}`);
-        }else{
-          toast.error("Error posting, Maybe you wrote more than 255 char?",{position:"top-center",autoClose:8000})
+          if (dbpost) {
+            toast.success("Upload Sucessfull", { position: "top-center" });
+            // TODO:   navigate(`/post/${dbpost.$id}`);
+          } else {
+            toast.error("Error posting, Maybe you wrote more than 255 char?", {
+              position: "top-center",
+              autoClose: 8000,
+            });
+          }
         }
+      } else {
+        toast.error("Failed to get user data, please refresh the page");
       }
     }
   };
@@ -142,7 +150,7 @@ function PostForm({ post }) {
             name="content"
             control={control}
             defaultValue={getValues("content")}
-            {...register("content",{required:true})}
+            {...register("content", { required: true })}
           />
         </div>
       </div>

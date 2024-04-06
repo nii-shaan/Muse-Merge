@@ -8,6 +8,7 @@ import { MdDeleteForever } from "react-icons/md";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { RxCrossCircled } from "react-icons/rx";
 import ReactHtmlParser from "react-html-parser";
+import { toast } from "react-toastify";
 
 function YourPosts() {
   const [posts, setPosts] = useState([]);
@@ -16,6 +17,16 @@ function YourPosts() {
 
   const [currentUser, setCurrentUser] = useState("");
   // console.log(currentUser);  PASSED
+
+  const deletePost = async (slug) => {
+    const res = await service.deletePost(slug);
+    if (res) {
+      setPosts(posts.filter((post) => post.$id !== slug));
+      toast.success("Post deleted successfully", { position: "top-center" });
+    } else {
+      toast.error("Post deletion failed", { position: "top-center" });
+    }
+  };
 
   useEffect(() => {
     authService.getCurrentUser().then((data) => setCurrentUser(data.$id));
@@ -88,6 +99,7 @@ function YourPosts() {
             <div
               id="editDelete"
               className="w-[20%] h-full flex items-center justify-end gap-3 sm:flex-col sm:justify-center  sm:ml-3 "
+              onClick={() => deletePost(data.$id)}
             >
               <Button
                 type="primary"
