@@ -1,5 +1,5 @@
-import { config } from "../config/config";
-import { Client, Account, ID, Databases, Storage, Query } from "appwrite";
+import conf from "../config/conf";
+import { Client, ID, Databases, Storage, Query } from "appwrite";
 
 class Service {
   client = new Client();
@@ -8,8 +8,8 @@ class Service {
 
   constructor() {
     this.client
-      .setEndpoint(config.appwriteEndpoint)
-      .setProject(config.appwriteProjectId);
+      .setEndpoint(conf.appwriteEndpoint)
+      .setProject(conf.appwriteProjectId);
 
     this.databases = new Databases(this.client);
     this.storage = new Storage(this.client);
@@ -71,8 +71,8 @@ class Service {
   async getPost(slug){
     try {
         return await this.databases.getDocument(
-            config.appwriteDatabaseId,
-            config.appwriteCollectionId,
+            conf.appwriteDatabaseId,
+            conf.appwriteCollectionId,
             slug
         )
     } catch (error) {
@@ -84,8 +84,8 @@ class Service {
   async getPosts(queries = [Query.equal("status","active")]){
     try {
         return this.databases.listDocuments(
-            config.appwriteDatabaseId,
-            config.appwriteCollectionId,
+            conf.appwriteDatabaseId,
+            conf.appwriteCollectionId,
             queries
         )
         
@@ -98,7 +98,7 @@ class Service {
   async uploadFile(file){
     try {
         return await this.storage.createFile(
-            config.appwriteBucketId,
+            conf.appwriteBucketId,
             ID.unique(),
             file
         )
@@ -110,7 +110,7 @@ class Service {
   async deleteFile(fileId){
     try {
         await this.storage.deleteFile(
-            config.appwriteBucketId,
+            conf.appwriteBucketId,
             fileId,
 
         )
@@ -122,14 +122,14 @@ class Service {
 
   getFilePreview(fileId){
     return this.storage.getFilePreview(
-        config.appwriteBucketId,
+        conf.appwriteBucketId,
         fileId
     )
   }
 
   downloadFile(fileId){
     return this.storage.getFileDownload(
-        config.appwriteBucketId,
+        conf.appwriteBucketId,
         fileId
     )
   }

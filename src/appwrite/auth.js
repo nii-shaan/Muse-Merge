@@ -1,4 +1,4 @@
-import { config } from "../config/config";
+import conf from '../config/conf'
 import { Client, Account, ID } from "appwrite";
 
 class AuthService {
@@ -7,8 +7,8 @@ class AuthService {
 
   constructor() {
     this.client
-      .setEndpoint(config.appwriteEndpoint)
-      .setProject(config.appwriteProjectId);
+      .setEndpoint(conf.appwriteEndpoint)
+      .setProject(conf.appwriteProjectId);
 
     this.account = new Account(this.client);
   }
@@ -46,8 +46,8 @@ class AuthService {
         
     } catch (error) {
         throw error
+        return null;
     }
-    return null;
   }
 
   async logout(){
@@ -59,6 +59,6 @@ class AuthService {
   }
 }
 
-const authService = new AuthService();
+export const authService = new AuthService();
 
-export default authService;
+// export default authService;
