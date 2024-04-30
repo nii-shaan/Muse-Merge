@@ -2,7 +2,7 @@ import React from 'react'
 
 function Signup() {
   return (
-    <div>Signup</div>
+    <div className='bg-[#151515] h-screen w-full'>a</div>
   )
 }
 

@@ -63,10 +63,10 @@ function Header() {
       variants={navVariants}
       transition={{ delay: 0.05 }}
     >
-      <div className="w-full h-[80px] flex mt-[20px]">
-        <div id="leftSide" className="h-full w-[50%] "></div>
+      <div className="w-full h-[80px] flex mt-[20px] ">
+        <div id="leftSide" className="h-full w-[50%] sm:w-[30%]"></div>
 
-        <div id="rightSide" className=" h-full w-[50%] border-[#151515] border-l-[2px]">
+        <div id="rightSide" className=" h-full w-[50%]  sm:w-[70%]">
           <ul className="w-full h-full flex items-center justify-evenly">
             {navItems.map((item) =>
               item.active ? (
