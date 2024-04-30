@@ -66,7 +66,7 @@ function Header() {
       <div className="w-full h-[80px] flex mt-[20px]">
         <div id="leftSide" className="h-full w-[50%] "></div>
 
-        <div id="rightSide" className=" h-full w-[50%] border-white border-l">
+        <div id="rightSide" className=" h-full w-[50%] border-[#151515] border-l-[2px]">
           <ul className="w-full h-full flex items-center justify-evenly">
             {navItems.map((item) =>
               item.active ? (
@@ -94,7 +94,7 @@ function Header() {
       </div>
 
       <div className="w-full  flex items-center justify-center ">
-        {!displayNav ? (
+        {displayNav ? (
           <Tooltip
             title="Hide Navigation Bar"
             placement="bottom"
@@ -113,8 +113,9 @@ function Header() {
           >
             <button>
               <SlArrowUp
-                className="text-[35px] cursor-pointer"
+                className="text-[35px] cursor-pointer hover:text-[#a3a3a3]"
                 onClick={handleDisplayNav}
+
               />
             </button>
           </Tooltip>
@@ -137,7 +138,7 @@ function Header() {
           >
             <button>
               <SlArrowDown
-                className="text-[35px] cursor-pointer"
+                className="text-[35px] cursor-pointer hover:text-[#a3a3a3]"
                 onClick={handleDisplayNav}
               />
             </button>
