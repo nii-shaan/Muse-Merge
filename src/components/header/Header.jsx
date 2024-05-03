@@ -51,19 +51,19 @@ function Header() {
   ];
 
   const navVariants = {
-    hidden: { y: -100 },
+    hidden: { y: -70 },
     visible: { y: 0 },
   };
 
   return (
     <motion.header
-      className="bg-[#3D3C42]  w-full text-center text-white flex flex-col"
+      className="bg-[#3D3C42]  w-full text-center text-white flex flex-col mb-[50px]"
       initial={displayNav ? "visible" : "hidden"}
       animate={displayNav ? "visible" : "hidden"}
       variants={navVariants}
       transition={{ delay: 0.05 }}
     >
-      <div className="w-full h-[80px] flex mt-[20px] ">
+      <div className="w-full h-[50px] flex mt-[20px] ">
         <div id="leftSide" className="h-full w-[50%] sm:w-[30%]"></div>
 
         <div id="rightSide" className=" h-full w-[50%]  sm:w-[70%]">
