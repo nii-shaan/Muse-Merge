@@ -72,7 +72,7 @@ function Login() {
                 </label>
               </div>
               <div className="-ml-2.5">
-                {error && <p className="text-red-500 relative z-10">{error}</p>}
+                {error && <p className="text-red-500 relative z-10 text-center w-full flex justify-center">{error}</p>}
                 <div className="inline-flex items-center">
                   <label
                     data-ripple-dark="true"
