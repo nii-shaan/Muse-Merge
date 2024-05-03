@@ -13,16 +13,14 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    authService
-      .getCurrentUser()
-      .then((userData) => {
-        if (userData) {
-          dispatch(login({ userData }));
-        } else {
-          dispatch(logout());
-        }
-      })
-      .finally(() => setLoading(false));
+    authService.getCurrentUser().then((userData) => {
+      if (userData) {
+        dispatch(login({ userData }));
+      } else {
+        dispatch(logout());
+      }
+    })
+    .finally(() => setLoading(false));
   }, []);
   console.log("test");
 
@@ -37,7 +35,16 @@ function App() {
   } else {
     return (
       <>
-        <div className="bg-[#1E0342] h-screen">s</div>
+        <div className="bg-[#151515] h-screen w-full flex flex-col justify-center items-center">
+          <div class="animate-pulse flex flex-col items-center gap-4 w-full h-full justify-center">
+            <div class="w-full h-[20%] bg-slate-400 rounded-md"></div>
+            <div class="w-[80%] h-[10%] bg-slate-400 mx-auto mt-3 rounded-md"></div>
+            <div class="h-[5%] bg-slate-400 w-[70%] rounded-md"></div>
+            <div class="h-[50%] bg-slate-400 w-[60%] rounded-md"></div>
+            <div class="h-[15%] bg-slate-400 w-[95%] rounded-md"></div>
+            <div class="h-[20%] bg-slate-400 w-full rounded-md"></div>
+          </div>
+        </div>
       </>
     );
   }
