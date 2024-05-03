@@ -31,7 +31,7 @@ function Login() {
   };
   return (
     <div className="bg-[#151515] h-screen w-full flex items-center justify-center min-h-[700px]">
-      <div className="bg-white h-[600px] w-[500px] flex flex-col items-center justify-center  ">
+      <div className="bg-[#3C5B6F] h-[600px] w-[500px] flex flex-col items-center justify-center rounded-2xl  ">
         <form onSubmit={handleSubmit(handleLogin)}>
           <div className="relative flex w-96 flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
             <div className="relative mx-4 -mt-6 mb-4 grid h-28 place-items-center overflow-hidden rounded-xl bg-gradient-to-tr from-cyan-600 to-cyan-400 bg-clip-border text-white shadow-lg shadow-cyan-500/40">
