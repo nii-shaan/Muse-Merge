@@ -7,21 +7,31 @@ import { toast } from "react-toastify";
 
 function Signup() {
   const [error, setError] = useState("");
-  const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
 
   const [showPass, setShowPass] = useState(false);
 
   const create = async (data) => {
+    // console.log(data);  PASSED
     setError("");
     try {
-      await authService.createAccount(data).then(() =>
-        toast.success("sucess", {
+      const res = await authService.createAccount(data);
+      if (res.status) {
+        toast.success("Account created sucessfully, Please proceed to login.", {
           position: "top-center",
           autoClose: 4000,
-        })
-      );
+        });
+      } else {
+        toast.error(`Account Creation Failed! ${res.message}`, {
+          position: "top-center",
+          autoClose: 4000,
+        });
+      }
     } catch (error) {
+      toast.error(`Failed! ${error.message}`, {
+        position: "top-center",
+        autoClose: 4000,
+      });
       setError(error.message);
     }
   };
@@ -99,7 +109,7 @@ function Signup() {
                       id="password"
                       placeholder="••••••••"
                       className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      {...register("name", {
+                      {...register("password", {
                         required: true,
                       })}
                     />

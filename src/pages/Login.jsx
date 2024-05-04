@@ -21,8 +21,15 @@ function Login() {
       const session = await authService.login(data);
       if (session) {
         const userData = await authService.getCurrentUser();
-        if (userData) dispatch(login(userData));
-        navigate("/");
+        if (userData) {
+          dispatch(login(userData));
+          navigate("/");
+          // console.log(userData); PASSED
+          toast.success("Log in Sucessfull.", {
+            position: "top-center",
+            autoClose: 4000,
+          });
+        }
       }
     } catch (error) {
       setError(error.message);
@@ -71,7 +78,11 @@ function Login() {
                 </label>
               </div>
               <div className="-ml-2.5">
-                {error && <p className="text-red-500 relative z-10 text-center w-full flex justify-center">{error}</p>}
+                {error && (
+                  <p className="text-red-500 relative z-10 text-center w-full flex justify-center">
+                    {error}
+                  </p>
+                )}
                 <div className="inline-flex items-center">
                   <label
                     data-ripple-dark="true"
