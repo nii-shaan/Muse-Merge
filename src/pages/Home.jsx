@@ -42,7 +42,7 @@ function Home() {
         <div className="bg-[#151515] h-screen w-full min-h- [700px] text-white flex flex-col items-center justify-start">
           <div className="h-[500px]  w-full flex items-center justify-center flex-col">
             <div id="textArea">
-              <span className="text-[60px] font-cursive ">
+              <span className="text-6xl font-cursive md:text-2xl">
                 <Typewriter
                   words={[
                     "Write, Inspire, Connect.",

@@ -4,8 +4,8 @@ import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import { SlArrowUp, SlArrowDown } from "react-icons/sl";
 import { useState } from "react";
-import {  Tooltip } from 'antd';
-import {Logout} from "../index";
+import { Tooltip } from "antd";
+import { Logout } from "../index";
 
 function Header() {
   const activeStatus = useSelector((state) => state.authReducer.status);
@@ -64,10 +64,8 @@ function Header() {
       transition={{ delay: 0.05 }}
     >
       <div className="w-full h-[50px] flex mt-[20px] ">
-        <div id="leftSide" className="h-full w-[50%] sm:w-[30%]"></div>
-
-        <div id="rightSide" className=" h-full w-[50%]  sm:w-[70%]">
-          <ul className="w-full h-full flex items-center justify-evenly">
+        <div id="r" className="h-full w-full flex justify-center ">
+          <ul className="w-full h-full flex items-center justify-evenly max-w-lg sm:text-xs">
             {navItems.map((item) =>
               item.active ? (
                 <li key={item.id}>
@@ -95,29 +93,16 @@ function Header() {
 
       <div className="w-full  flex items-center justify-center ">
         {displayNav ? (
-
-
-          <Tooltip
-         placement="bottom"
-         title="Hide Navigation Bar"
-         color="gray"
-          >
+          <Tooltip placement="bottom" title="Hide Navigation Bar" color="gray">
             <button>
               <SlArrowUp
                 className="text-[35px] cursor-pointer hover:text-[#a3a3a3]"
                 onClick={handleDisplayNav}
-
               />
             </button>
           </Tooltip>
         ) : (
-          <Tooltip
-          placement="bottom"
-          title="Show Navigation Bar"
-          color="gray"
-          
-           >
-          
+          <Tooltip placement="bottom" title="Show Navigation Bar" color="gray">
             <button>
               <SlArrowDown
                 className="text-[35px] cursor-pointer hover:text-[#a3a3a3]"
