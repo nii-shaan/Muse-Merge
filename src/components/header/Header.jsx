@@ -5,7 +5,7 @@ import Logout from "./Logout";
 import { motion } from "framer-motion";
 import { SlArrowUp, SlArrowDown } from "react-icons/sl";
 import { useState } from "react";
-import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
+import {  Tooltip } from 'antd';
 
 function Header() {
   const activeStatus = useSelector((state) => state.authReducer.status);
@@ -95,21 +95,12 @@ function Header() {
 
       <div className="w-full  flex items-center justify-center ">
         {displayNav ? (
+
+
           <Tooltip
-            title="Hide Navigation Bar"
-            placement="bottom"
-            className="relative z-20"
-            arrow
-            slotProps={{
-              popper: {
-                sx: {
-                  [`&.${tooltipClasses.popper}[data-popper-placement*="bottom"] .${tooltipClasses.tooltip}`]:
-                    {
-                      marginTop: "30px",
-                    },
-                },
-              },
-            }}
+         placement="bottom"
+         title="Hide Navigation Bar"
+         color="gray"
           >
             <button>
               <SlArrowUp
@@ -121,21 +112,12 @@ function Header() {
           </Tooltip>
         ) : (
           <Tooltip
-            title="Show Navigation Bar"
-            placement="bottom"
-            className="relative z-20"
-            arrow
-            slotProps={{
-              popper: {
-                sx: {
-                  [`&.${tooltipClasses.popper}[data-popper-placement*="bottom"] .${tooltipClasses.tooltip}`]:
-                    {
-                      marginTop: "30px",
-                    },
-                },
-              },
-            }}
-          >
+          placement="bottom"
+          title="Show Navigation Bar"
+          color="gray"
+          
+           >
+          
             <button>
               <SlArrowDown
                 className="text-[35px] cursor-pointer hover:text-[#a3a3a3]"
