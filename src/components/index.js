@@ -1,7 +1,8 @@
-import Header from './header/Header'
-import Footer from './footer/Footer'
+import PostForm from "./post-form/PostForm";
+import Protected from "./AuthLayout";
+import Input from "./Input";
+import PostCard from "./PostCard";
+import RTE from "./RTE";
+import Select from "./Select";
 
-export {
-    Header,
-    Footer,
-}
+export { PostForm, Protected, Input, PostCard, RTE, Select };

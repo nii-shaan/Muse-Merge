@@ -1,14 +1,11 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { authService } from "./appwrite/auth";
-import { useEffect } from "react";
-import { login, logout } from "./store/slices/Auth";
-import { Header, Footer } from "./components/index";
 import { Outlet } from "react-router-dom";
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import Loader from "./pages/Loader";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { authService } from "./appwrite/auth";
+import { login, logout } from "./store/slices/Auth";
+import { Header, Footer, Loader } from "./pages/index";
 
 function App() {
   const dispatch = useDispatch();
@@ -16,14 +13,16 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    authService.getCurrentUser().then((userData) => {
-      if (userData) {
-        dispatch(login({ userData }));
-      } else {
-        dispatch(logout());
-      }
-    })
-    .finally(() => setLoading(false));
+    authService
+      .getCurrentUser()
+      .then((userData) => {
+        if (userData) {
+          dispatch(login({ userData }));
+        } else {
+          dispatch(logout());
+        }
+      })
+      .finally(() => setLoading(false));
   }, []);
   console.log("test");
 
@@ -31,17 +30,13 @@ function App() {
     return (
       <>
         <Header />
-        <ToastContainer/>
+        <ToastContainer />
         <Outlet />
         <Footer />
       </>
     );
   } else {
-    return (
-
-      <Loader/>
-      
-    );
+    return <Loader />;
   }
 }
 

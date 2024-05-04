@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { authService } from "../appwrite/auth";
 import { Link, useNavigate } from "react-router-dom";
-import { login } from "../store/slices/Auth";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
@@ -41,10 +40,11 @@ function Signup() {
                 <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                   Create an account
                 </h1>
-                <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit(create)}>
-
-
-                <div>
+                <form
+                  className="space-y-4 md:space-y-6"
+                  onSubmit={handleSubmit(create)}
+                >
+                  <div>
                     <label
                       htmlFor="name"
                       className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -56,13 +56,11 @@ function Signup() {
                       id="name"
                       className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="your full name"
-                       {...register("name",{
-                        required:true
+                      {...register("name", {
+                        required: true,
                       })}
                     />
                   </div>
-
-
 
                   <div>
                     <label
@@ -101,15 +99,13 @@ function Signup() {
                       id="password"
                       placeholder="••••••••"
                       className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      {...register("name",{
-                        required:true
+                      {...register("name", {
+                        required: true,
                       })}
                     />
                   </div>
-                 
 
                   <div className="w-full flex justify-center">
-                
                     {error && <p className="text-red-600 ">{error.message}</p>}
                   </div>
 

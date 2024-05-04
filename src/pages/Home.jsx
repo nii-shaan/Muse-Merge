@@ -1,20 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Typewriter } from "react-simple-typewriter";
 import { Button } from "antd";
 import { CiLogin } from "react-icons/ci";
 import { SiGnuprivacyguard } from "react-icons/si";
 import { Link } from "react-router-dom";
+import service from "../appwrite/config";
+import {PostCard} from "../components/index";
 
 function Home() {
+  const [posts, setPosts] = useState([]);
 
+  useEffect(() => {
+    service.getPosts().then((posts) => {
+      if (posts) {
+        setPosts(posts.documents);
+      }
+    });
+  }, []);
 
-  const status = useSelector(state=>state.authReducer.status);
+  const status = useSelector((state) => state.authReducer.status);
   console.log(status);
 
   if (status) {
     return (
-      <div className="bg-[#151515] h-screen w-full min-h-[700px] text-white flex items-center justify-center"></div>
+      <div className="bg-[#151515] h-screen w-full min-h-[700px] text-white flex items-center justify-center">
+        {posts.map((post) => (
+          <div key={post.$id}>
+            <PostCard post={post} />
+          </div>
+        ))}
+      </div>
     );
   } else {
     return (

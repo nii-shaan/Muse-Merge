@@ -1,13 +1,11 @@
 import React, { useCallback } from "react";
+import { Button } from "antd";
 import { useForm } from "react-hook-form";
 import service from "../../appwrite/config";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import RTE from "../RTE";
-import Select from "../Select";
-import Input from "../Input";
-import { Button } from "antd";
+import { RTE, Select, Input } from "../index";
 
 function PostForm({ post }) {
   const { register, handleSubmit, watch, setValue, control, getValues } =

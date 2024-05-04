@@ -1,11 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
-import Logout from "./Logout";
 import { motion } from "framer-motion";
 import { SlArrowUp, SlArrowDown } from "react-icons/sl";
 import { useState } from "react";
 import {  Tooltip } from 'antd';
+import {Logout} from "../index";
 
 function Header() {
   const activeStatus = useSelector((state) => state.authReducer.status);

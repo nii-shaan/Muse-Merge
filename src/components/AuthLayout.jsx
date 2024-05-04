@@ -1,29 +1,26 @@
-import { useEffect,useState } from "react"
-import { useSelector } from "react-redux"
-import { useNavigate } from "react-router-dom"
+import React from "react";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { Loader } from "../pages/index";
 
-import React from 'react'
-import Loader from "../pages/Loader"
+function Protected({ children, authentication = true }) {
+  const navigate = useNavigate();
+  const [loader, setLoader] = useState(true);
 
-export default function Protected({children,authentication = true}) {
+  const authStatus = useSelector(state.authReducer.status);
 
-    const navigate= useNavigate()
-    const [loader,setLoader] = useState(true)
-
-    const authStatus = useSelector(state.authReducer.status)
-
-useEffect(()=>{
-    if(authentication && authStatus!==authentication){
-        navigate("/login")
-
-    }
-    else if(!authentication && authStatus !==authentication){
-        navigate("/")
+  useEffect(() => {
+    if (authentication && authStatus !== authentication) {
+      navigate("/login");
+    } else if (!authentication && authStatus !== authentication) {
+      navigate("/");
     }
 
-    setLoader(false)
+    setLoader(false);
+  }, [authStatus, navigate, authentication]);
 
-},[authStatus,navigate,authentication])
-
-  return loader ? <Loader/>:<>{children}</>
+  return loader ? <Loader /> : <>{children}</>;
 }
+
+export default Protected;
