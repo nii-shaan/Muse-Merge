@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 
 function Signup() {
+  const navigate = useNavigate();
   const [error, setError] = useState("");
   const { register, handleSubmit } = useForm();
 
@@ -16,13 +17,16 @@ function Signup() {
     setError("");
     try {
       const res = await authService.createAccount(data);
-      if (res.status) {
+
+      if (res) {
         toast.success("Account created sucessfully, Please proceed to login.", {
           position: "top-center",
-          autoClose: 4000,
+          autoClose: 6000,
         });
+        navigate("/login");
       } else {
-        toast.error(`Account Creation Failed! ${res.message}`, {
+        console.log(res);
+        toast.error(`Account Creation Failed! ${res}`, {
           position: "top-center",
           autoClose: 4000,
         });
@@ -140,7 +144,7 @@ function Signup() {
                     </div>
                   </div>
 
-                  <div className="flex items-start">
+                  {/* <div className="flex items-start">
                     <div className="flex items-center h-5">
                       <input
                         id="terms"
@@ -161,7 +165,7 @@ function Signup() {
                         </Link>
                       </label>
                     </div>
-                  </div>
+                  </div> */}
                   <button
                     type="submit"
                     className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 border-[2px] border-black hover:bg-[#424242]"
