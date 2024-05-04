@@ -4,8 +4,8 @@ import { Controller } from "react-hook-form";
 
 export default function RTE({ name, control, label, defaultValue = "" }) {
   return (
-    <div className="w-full">
-      {label && <label className="text-sm text-gray-600">{label}</label>}
+    <div className="w-full h-[800px]">
+      {label && <label className="text-sm text-white">{label}</label>}
       <Controller
         name={name || "content"}
         control={control}
@@ -14,7 +14,8 @@ export default function RTE({ name, control, label, defaultValue = "" }) {
             initialValue={defaultValue}
             init={{
               initialValue: defaultValue,
-              height: 500,
+              height: 800,
+              width:"100%",
               menubar: true,
               plugins: [
                 "image",

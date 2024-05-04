@@ -7,9 +7,9 @@ import { SiGnuprivacyguard } from "react-icons/si";
 import { Link } from "react-router-dom";
 
 function Home() {
-  // useSelector(state=>state.authReducer.status)
 
-  const status = false;
+
+  const status = useSelector(state=>state.authReducer.status);
   console.log(status);
 
   if (status) {

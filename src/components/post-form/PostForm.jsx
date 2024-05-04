@@ -5,8 +5,9 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import RTE from "../RTE";
-import { Select } from "../Select";
-import { Input } from "../Input";
+import Select from "../Select";
+import Input from "../Input";
+import { Button } from "antd";
 
 function PostForm({ post }) {
   const { register, handleSubmit, watch, setValue, control, getValues } =
@@ -86,16 +87,19 @@ function PostForm({ post }) {
     }, [watch, slugTransform, setValue]);
   };
   return (
-    <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
-      <div className="w-2/3 px-2">
+    <form
+      onSubmit={handleSubmit(submit)}
+      className="flex flex-wrap flex-col items-center justify-center"
+    >
+      <div className="w-full px-2 flex flex-wrap flex-col items-start justify-center">
         <Input
-          label="Title :"
+          label="Title: "
           placeholder="Title"
           className="mb-4"
           {...register("title", { required: true })}
         />
         <Input
-          label="Slug :"
+          label="Slug: "
           placeholder="Slug"
           className="mb-4"
           {...register("slug", { required: true })}
@@ -105,6 +109,12 @@ function PostForm({ post }) {
             });
           }}
         />
+        <Select
+          options={["active", "inactive"]}
+          label="Status"
+          className="mb-4"
+          {...register("status", { required: true })}
+        />
         <RTE
           label="Content :"
           name="content"
@@ -112,14 +122,15 @@ function PostForm({ post }) {
           defaultValue={getValues("content")}
         />
       </div>
-      <div className="w-1/3 px-2">
+      <div className="w-1/3 px-2 mt-3">
         <Input
           label="Featured Image :"
           type="file"
-          className="mb-4"
+          className="mb-4 w-[200px] text-white"
           accept="image/png, image/jpg, image/jpeg, image/gif"
           {...register("image", { required: !post })}
         />
+
         {post && (
           <div className="w-full mb-4">
             <img
@@ -129,18 +140,15 @@ function PostForm({ post }) {
             />
           </div>
         )}
-        <Select
-          options={["active", "inactive"]}
-          label="Status"
-          className="mb-4"
-          {...register("status", { required: true })}
-        />
+
         <button
           type="submit"
           bgColor={post ? "bg-green-500" : undefined}
-          className="w-full"
+          className="w-full h-[30px] mt-5"
         >
-          {post ? "Update" : "Submit"}
+          <Button type="primary" className="h-full w-full ">
+            {post ? "Update" : "Submit"}
+          </Button>
         </button>
       </div>
     </form>
