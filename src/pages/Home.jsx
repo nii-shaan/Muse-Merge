@@ -15,6 +15,7 @@ function Home() {
     service.getPosts().then((posts) => {
       if (posts) {
         setPosts(posts.documents);
+        console.log(posts);
       }
     });
   }, []);
@@ -24,12 +25,14 @@ function Home() {
 
   if (status) {
     return (
-      <div className="bg-[#151515] h-screen w-full min-h-[700px] text-white flex items-center justify-center">
+      <div className="bg-[#151515] h-screen w-full min-h-[700px] text-white flex px-5">
         {posts.map((post) => (
-          <div key={post.$id}>
-            <PostCard post={post} />
+
+          <div key={post.$id} className="bg-red-300 w-72 h-72">
+            <PostCard {...post} />
           </div>
         ))}
+
       </div>
     );
   } else {
