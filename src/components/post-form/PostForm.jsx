@@ -57,33 +57,29 @@ function PostForm({ post }) {
         }
       }
     }
-
-    const slugTransform = useCallback((value) => {
-      if (value && typeof value === "string") {
-        return value
-          .trim()
-          .toLowerCase()
-          .replace(/^[a-zA-Z\d\s]+/g, "-")
-          .replace(/\s/g, "-");
-      }
-      return "";
-    }, []);
-
-    React.useEffect(() => {
-      const subscription = watch((value, { name }) => {
-        if (name === "title") {
-          setValue(
-            "slug",
-            slugTransform(value.title, { shouldValidate: true })
-          );
-        }
-      });
-
-      return () => {
-        subscription.unsubscribe();
-      };
-    }, [watch, slugTransform, setValue]);
   };
+  const slugTransform = useCallback((value) => {
+    if (value && typeof value === "string") {
+      return value
+        .trim()
+        .toLowerCase()
+        .replace(/\s+/g, "-");
+    }
+    return "";
+  }, []);
+
+  React.useEffect(() => {
+    const subscription = watch((value, { name }) => {
+      if (name === "title") {
+        setValue("slug", slugTransform(value.title, { shouldValidate: true }));
+      }
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, [watch, slugTransform, setValue]);
+
   return (
     <form
       onSubmit={handleSubmit(submit)}
@@ -139,18 +135,11 @@ function PostForm({ post }) {
           </div>
         )}
 
-        <button
-          type="submit"
-          bgColor={post ? "bg-green-500" : undefined}
-          className="w-full h-[30px] mt-5"
-        >
-          <Button type="primary" className="h-full w-full ">
-            {post ? "Update" : "Submit"}
-          </Button>
-        </button>
+        <Button htmlType="submit" type="primary" className=" h-[30px] w-full ">
+          {post ? "Update" : "Submit"}
+        </Button>
       </div>
     </form>
   );
 }
-
 export default PostForm;
