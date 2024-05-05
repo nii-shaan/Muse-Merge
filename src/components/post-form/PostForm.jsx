@@ -1,20 +1,31 @@
 import React, { useCallback } from "react";
 import { Button } from "antd";
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import service from "../../appwrite/config";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { RTE, Select, Input } from "../index";
+import { authService } from "../../appwrite/auth";
+import { useEffect } from "react";
+import { useState } from "react";
 
 function PostForm({ post }) {
+  const [currentUser, setCurrentUser] = useState("");
+  console.log(currentUser);
+
+  useEffect(() => {
+    authService.getCurrentUser().then((data) => setCurrentUser(data.$id));
+  }, []);
+
   const { register, handleSubmit, watch, setValue, control, getValues } =
     useForm({
       defaultValues: {
         title: post?.title || "",
-        slug: post?.slug || "",
+        slug: post?.$id || "",
         content: post?.content || "",
         status: post?.status || "active",
+        user_id: currentUser,
       },
     });
 
@@ -23,15 +34,16 @@ function PostForm({ post }) {
   const userData = useSelector((state) => state.authReducer.userData);
 
   const submit = async (data) => {
+    data.user_id = currentUser;
     if (post) {
       const file = data.image[0] ? service.uploadFile(data.image[0]) : null;
 
       if (file) {
-        service.deleteFile(post.featuredImage);
+        service.deleteFile(post.featured_image);
       }
       const dbPost = await service.updatePost(post.$id, {
         ...data,
-        featuredImage: file ? file.$id : undefined,
+        featured_image: file ? file.$id : undefined,
       });
 
       if (dbPost) {
@@ -46,24 +58,22 @@ function PostForm({ post }) {
 
       if (file) {
         const fileId = file.$id;
-        data.featuredImage = fileId;
+        data.featured_image = fileId;
         const dbpost = await service.createPost({
           ...data,
           userId: userData.$id,
         });
 
         if (dbpost) {
-          navigate(`/post/${dbpost.$id}`);
+          toast.success("Upload Sucessfull", { position: "top-center" });
+          // TODO:   navigate(`/post/${dbpost.$id}`); 
         }
       }
     }
   };
   const slugTransform = useCallback((value) => {
     if (value && typeof value === "string") {
-      return value
-        .trim()
-        .toLowerCase()
-        .replace(/\s+/g, "-");
+      return value.trim().toLowerCase().replace(/\s+/g, "-");
     }
     return "";
   }, []);
@@ -128,7 +138,7 @@ function PostForm({ post }) {
         {post && (
           <div className="w-full mb-4">
             <img
-              src={service.getFilePreview(post.featuredImage)}
+              src={service.getFilePreview(post.featured_image)}
               alt={post.title}
               className="rounded-lg"
             />

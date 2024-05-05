@@ -15,18 +15,18 @@ class Service {
     this.storage = new Storage(this.client);
   }
 
-  async createPost({ title, slug, content, featuredImage, status, userId }) {
+  async createPost({ title, slug, content, featured_image, status, user_id }) {
     try {
       return await this.databases.createDocument(
-        config.appwriteDatabaseId,
-        config.appwriteCollectionId,
+        conf.appwriteDatabaseId,
+        conf.appwriteCollectionId,
         slug,
         {
           title,
           content,
-          featuredImage,
+          featured_image,
           status,
-          userId,
+          user_id,
         }
       );
     } catch (error) {
@@ -37,8 +37,8 @@ class Service {
   async updatePost(slug, { title, content, featuredImage, status }) {
     try {
       return await this.databases.updateDocument(
-        config.appwriteDatabaseId,
-        config.appwriteCollectionId,
+        conf.appwriteDatabaseId,
+        conf.appwriteCollectionId,
         slug,
         {
           title,
@@ -55,8 +55,8 @@ class Service {
   async deletePost(slug) {
     try {
        await this.databases.deleteDocument(
-        config.appwriteDatabaseId,
-        config.appwriteCollectionId,
+        conf.appwriteDatabaseId,
+        conf.appwriteCollectionId,
         slug
       );
       return true;
@@ -81,7 +81,8 @@ class Service {
     }
   }
 
-  async getPosts(queries = [Query.equal("status","active")]){
+  // Query.equal("status","active")
+  async getPosts(queries = []){
     try {
         return this.databases.listDocuments(
             conf.appwriteDatabaseId,
