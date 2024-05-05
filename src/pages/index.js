@@ -1,5 +1,5 @@
 import Addpost from "./AddPost";
-import AllPost from "./AllPost";
+import YourPosts from "./YourPosts"
 import Login from "./Login";
 import Signup from "./Signup";
 import Home from "./Home";
@@ -13,7 +13,7 @@ import Post from "./Post";
 
 export {
   Addpost,
-  AllPost,
+  YourPosts,
   Login,
   Signup,
   Home,

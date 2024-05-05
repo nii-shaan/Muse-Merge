@@ -9,7 +9,7 @@ import {
   createRoutesFromElements,
   createBrowserRouter,
 } from "react-router-dom";
-import { Addpost, AllPost, Home, Login, Signup } from "./pages/index.js";
+import { Addpost, YourPosts, Home, Login, Signup } from "./pages/index.js";
 import { RouterProvider } from "react-router-dom";
 import Protected from "./components/AuthLayout.jsx";
 
@@ -27,11 +27,11 @@ const router = createBrowserRouter(
         }
       />
       <Route
-        path="/allposts"
+        path="/yourposts"
         element={
           <Protected>
             {" "}
-            <AllPost />
+            <YourPosts />
           </Protected>
         }
       />

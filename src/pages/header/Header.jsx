@@ -38,8 +38,8 @@ function Header() {
     },
     {
       id: 4,
-      name: "All Posts",
-      path: "/allposts",
+      name: "Your Posts",
+      path: "/yourposts",
       active: activeStatus,
     },
     {
