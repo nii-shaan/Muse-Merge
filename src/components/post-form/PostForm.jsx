@@ -69,6 +69,8 @@ function PostForm({ post }) {
         if (dbpost) {
           toast.success("Upload Sucessfull", { position: "top-center" });
           // TODO:   navigate(`/post/${dbpost.$id}`);
+        }else{
+          toast.error("Error posting, Maybe you wrote more than 255 char?",{position:"top-center",autoClose:8000})
         }
       }
     }

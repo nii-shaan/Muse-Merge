@@ -6,7 +6,7 @@ import { CiLogin } from "react-icons/ci";
 import { SiGnuprivacyguard } from "react-icons/si";
 import { Link } from "react-router-dom";
 import service from "../appwrite/config";
-import { PostCard } from "../components/index";
+import ReactHtmlParser from "react-html-parser";
 
 function Home() {
   const [posts, setPosts] = useState([]);
@@ -27,18 +27,19 @@ function Home() {
     return (
       <div className="bg-[#151515] w-full min-h-[800px] text-white flex flex-wrap px-5">
         {posts.map((post) => (
+
           <div
             key={post.$id}
-            className="bg-[#98ABEE] w-72 h-80 mb-10 rounded-xl mx-5 flex flex-col item-center"
+            className="bg-[#7469B6] w-72 h-80 mb-10 rounded-xl mx-5 flex flex-col item-center"
           >
             <div
               id="title"
-              className="h-[10%] bg-red-400 flex items-center justify-center text-lg text-[#F8F4EC]"
+              className="h-[10%]  flex items-center justify-center text-xl font-cursive font-thin text-[#FFF7F1]"
             >
               {post.title}
             </div>
 
-            <div className="h-[50%] w-full bg-contain bg-no-repeat  rounded-xl flex items-center justify-center border-b-2 border-white">
+            <div className="h-[50%] w-full bg-contain bg-no-repeat  rounded-xl flex items-center justify-center border-b-2 border-white pt-2">
               <div
                 id="featuredImage"
                 className="h-full w-[70%] bg-contain bg-no-repeat  rounded-xl  "
@@ -49,8 +50,15 @@ function Home() {
                 }}
               ></div>
             </div>
+                <div id="content" className="w-full h-[40%] overflow-y-scroll bg-gray-400 text-sm p-2 text-black">
+                {ReactHtmlParser(post.content)}
+                </div>
+
           </div>
         ))}
+
+
+
       </div>
     );
   } else {

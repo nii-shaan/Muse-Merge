@@ -31,6 +31,7 @@ class Service {
       );
     } catch (error) {
       console.log(error);
+      return false;
     }
   }
 
@@ -49,6 +50,7 @@ class Service {
       );
     } catch (error) {
       console.log(error);
+      return false
     }
   }
 
