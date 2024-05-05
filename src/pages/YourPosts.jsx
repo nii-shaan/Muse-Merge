@@ -45,15 +45,21 @@ function YourPosts() {
             {console.log(data)}
             {console.log(service.getFilePreview(data.featured_image))}
 
-            <div
-              id="featuredImage"
-              className="w-[30%] h-[75%] bg-cover mr-4 rounded-xl "
+            <div className=" w-[30%] h-[75%]  mr-4 rounded-xl flex items-center"
+              
+            >
+              <div id="featuredImage"
+              className="w-full h-full bg-contain bg-no-repeat  rounded-xl "
               style={{
                 backgroundImage: `url("${
                   service.getFilePreview(data.featured_image).href
                 }")`,
-              }}
-            ></div>
+              }}>
+
+              </div>
+
+
+            </div>
 
             <div
               id="infos"
@@ -63,34 +69,34 @@ function YourPosts() {
                 id="blogInfo"
                 className=" h-[25%] flex flex-col justify-start items-center border-b mb-2"
               >
-                <h1 className="text-3xl text-[#A5DD9B]">Title: {data.title}</h1>
-                <span className="flex items-center justify-center text-white">
+                <h1 className="text-3xl text-[#A5DD9B] sm:text-xl">Title: {data.title}</h1>
+                <span className="flex items-center justify-center text-white sm:text-[12px]">
                   Status: {data.status}
                   {data.status == "active" ? (
-                    <FaRegCircleCheck className="text-lg text-green-500 mt-[2px] ml-2" />
+                    <FaRegCircleCheck className="text-lg text-green-500 mt-[2px] ml-2 sm:ml-1 sm:text-sm"  />
                   ) : (
-                    <RxCrossCircled className="text-xl text-red-500 mt-[2px] ml-2" />
+                    <RxCrossCircled className="text-xl text-red-500 mt-[2px] ml-2 sm:ml-1 sm:text-sm" />
                   )}
                 </span>
               </div>
-              <div id="content" className="bg-[#B5C0D0] w-full h-[70%] overflow-y-scroll p-3">
+              <div id="content" className="bg-[#B5C0D0] w-full h-[70%] overflow-y-scroll p-3 sm:text-sm">
                 {data.content}
               </div>
             </div>
 
             <div
               id="editDelete"
-              className="w-[20%] h-full flex items-center justify-end gap-3 sm:flex-col sm:justify-center sm:w-[25%]"
+              className="w-[20%] h-full flex items-center justify-end gap-3 sm:flex-col sm:justify-center  sm:ml-3 "
             >
               <Button
                 type="primary"
-                className="px-4 py-2 flex items-center justify-center"
+                className="px-4 py-2 flex items-center justify-center sm:px-2 sm:py-1"
               >
                 Edit
               </Button>
               <Button
                 type="primary"
-                className="px-4 py-2 flex items-center justify-evenly sm:px-0 sm:py-1 sm:text-sm "
+                className="px-4 py-2 flex items-center justify-evenly sm:px-0 sm:py-0 sm:text-sm "
               >
                 <MdDeleteForever className="text-black w-6 h-6 sm:text-sm" /> Delete
               </Button>
