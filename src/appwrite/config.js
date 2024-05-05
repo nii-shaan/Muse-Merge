@@ -15,8 +15,9 @@ class Service {
     this.storage = new Storage(this.client);
   }
 
-  async createPost({ title, slug, content, featured_image, status, user_id }) {
+  async createPost({ title, slug, content, featured_image, status, user_id,user_mail }) {
     try {
+      console.log(user_mail);
       return await this.databases.createDocument(
         conf.appwriteDatabaseId,
         conf.appwriteCollectionId,
@@ -27,6 +28,7 @@ class Service {
           featured_image,
           status,
           user_id,
+          user_mail,
         }
       );
     } catch (error) {
@@ -89,7 +91,8 @@ class Service {
         return this.databases.listDocuments(
             conf.appwriteDatabaseId,
             conf.appwriteCollectionId,
-            queries
+            queries,
+          
         )
         
     } catch (error) {

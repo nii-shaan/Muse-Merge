@@ -9,15 +9,16 @@ import { TextEditor, Select, Input } from "../index";
 import { authService } from "../../appwrite/auth";
 import { useEffect } from "react";
 import { useState } from "react";
-
 import "react-quill/dist/quill.snow.css";
 
 function PostForm({ post }) {
   const [currentUser, setCurrentUser] = useState("");
-  console.log(currentUser);
+  const [userMail,setUserMail] = useState("")
+  console.log(userMail);
 
   useEffect(() => {
     authService.getCurrentUser().then((data) => setCurrentUser(data.$id));
+    authService.getCurrentUser().then((data)=>setUserMail(data.email))
   }, []);
 
   const { register, handleSubmit, watch, setValue, control, getValues } =
@@ -64,6 +65,7 @@ function PostForm({ post }) {
         const dbpost = await service.createPost({
           ...data,
           user_id: userData.$id,
+          user_mail:userMail
         });
 
         if (dbpost) {

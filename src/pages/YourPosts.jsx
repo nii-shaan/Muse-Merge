@@ -11,7 +11,7 @@ import ReactHtmlParser from "react-html-parser";
 
 function YourPosts() {
   const [posts, setPosts] = useState([]);
-  console.log(posts);
+
   // console.log(posts);  PASSED
 
   const [currentUser, setCurrentUser] = useState("");
@@ -42,8 +42,8 @@ function YourPosts() {
             key={data.$id}
             className="bg-[#453F78] w-[90%] max-w-[1000px] h-[250px] rounded-xl flex items-center px-4  mb-8"
           >
-            {console.log(data)}
-            {console.log(service.getFilePreview(data.featured_image))}
+            {/* {console.log(data)}
+            {console.log(service.getFilePreview(data.featured_image))} */}
 
             <div className=" w-[30%] h-[75%]  mr-4 rounded-xl flex items-center">
               <div
