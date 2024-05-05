@@ -132,19 +132,13 @@ function PostForm({ post }) {
             {...register("status", { required: true })}
           />
         </div>
-
-        {/* <RTE
-          label="Content :"
-          name="content"
-          control={control}
-          defaultValue={getValues("content")}
-        /> */}
         <div className="w-full  flex justify-center">
           <TextEditor
             label="Content"
             name="content"
             control={control}
             defaultValue={getValues("content")}
+            {...register("content",{required:true})}
           />
         </div>
       </div>

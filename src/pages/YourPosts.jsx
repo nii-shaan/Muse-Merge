@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import service from "../appwrite/config";
-
 import { authService } from "../appwrite/auth";
 import { Triangle } from "react-loader-spinner";
 import { Link } from "react-router-dom";
@@ -8,6 +7,7 @@ import { Button } from "antd";
 import { MdDeleteForever } from "react-icons/md";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { RxCrossCircled } from "react-icons/rx";
+import ReactHtmlParser from "react-html-parser";
 
 function YourPosts() {
   const [posts, setPosts] = useState([]);
@@ -81,7 +81,7 @@ function YourPosts() {
                 id="content"
                 className="bg-[#B5C0D0] w-full h-[70%] overflow-y-scroll p-3 sm:text-sm"
               >
-                {data.content}
+                {ReactHtmlParser(data.content)}
               </div>
             </div>
 

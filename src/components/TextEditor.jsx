@@ -1,5 +1,4 @@
 import React from "react";
-import { Editor } from "@tinymce/tinymce-react";
 import { Controller } from "react-hook-form";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
