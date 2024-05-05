@@ -6,7 +6,7 @@ import { CiLogin } from "react-icons/ci";
 import { SiGnuprivacyguard } from "react-icons/si";
 import { Link } from "react-router-dom";
 import service from "../appwrite/config";
-import {PostCard} from "../components/index";
+import { PostCard } from "../components/index";
 
 function Home() {
   const [posts, setPosts] = useState([]);
@@ -25,14 +25,32 @@ function Home() {
 
   if (status) {
     return (
-      <div className="bg-[#151515] h-screen w-full min-h-[700px] text-white flex px-5">
+      <div className="bg-[#151515] w-full min-h-[800px] text-white flex flex-wrap px-5">
         {posts.map((post) => (
+          <div
+            key={post.$id}
+            className="bg-[#98ABEE] w-72 h-80 mb-10 rounded-xl mx-5 flex flex-col item-center"
+          >
+            <div
+              id="title"
+              className="h-[10%] bg-red-400 flex items-center justify-center text-lg text-[#F8F4EC]"
+            >
+              {post.title}
+            </div>
 
-          <div key={post.$id} className="bg-red-300 w-72 h-72">
-            <PostCard {...post} />
+            <div className="h-[50%] w-full bg-contain bg-no-repeat  rounded-xl flex items-center justify-center border-b-2 border-white">
+              <div
+                id="featuredImage"
+                className="h-full w-[70%] bg-contain bg-no-repeat  rounded-xl  "
+                style={{
+                  backgroundImage: `url("${
+                    service.getFilePreview(post.featured_image).href
+                  }")`,
+                }}
+              ></div>
+            </div>
           </div>
         ))}
-
       </div>
     );
   } else {

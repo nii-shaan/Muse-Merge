@@ -45,20 +45,16 @@ function YourPosts() {
             {console.log(data)}
             {console.log(service.getFilePreview(data.featured_image))}
 
-            <div className=" w-[30%] h-[75%]  mr-4 rounded-xl flex items-center"
-              
-            >
-              <div id="featuredImage"
-              className="w-full h-full bg-contain bg-no-repeat  rounded-xl "
-              style={{
-                backgroundImage: `url("${
-                  service.getFilePreview(data.featured_image).href
-                }")`,
-              }}>
-
-              </div>
-
-
+            <div className=" w-[30%] h-[75%]  mr-4 rounded-xl flex items-center">
+              <div
+                id="featuredImage"
+                className="w-full h-full bg-contain bg-no-repeat  rounded-xl "
+                style={{
+                  backgroundImage: `url("${
+                    service.getFilePreview(data.featured_image).href
+                  }")`,
+                }}
+              ></div>
             </div>
 
             <div
@@ -69,17 +65,22 @@ function YourPosts() {
                 id="blogInfo"
                 className=" h-[25%] flex flex-col justify-start items-center border-b mb-2"
               >
-                <h1 className="text-3xl text-[#A5DD9B] sm:text-xl">Title: {data.title}</h1>
+                <h1 className="text-3xl text-[#A5DD9B] sm:text-xl">
+                  Title: {data.title}
+                </h1>
                 <span className="flex items-center justify-center text-white sm:text-[12px]">
                   Status: {data.status}
                   {data.status == "active" ? (
-                    <FaRegCircleCheck className="text-lg text-green-500 mt-[2px] ml-2 sm:ml-1 sm:text-sm"  />
+                    <FaRegCircleCheck className="text-lg text-green-500 mt-[2px] ml-2 sm:ml-1 sm:text-sm" />
                   ) : (
                     <RxCrossCircled className="text-xl text-red-500 mt-[2px] ml-2 sm:ml-1 sm:text-sm" />
                   )}
                 </span>
               </div>
-              <div id="content" className="bg-[#B5C0D0] w-full h-[70%] overflow-y-scroll p-3 sm:text-sm">
+              <div
+                id="content"
+                className="bg-[#B5C0D0] w-full h-[70%] overflow-y-scroll p-3 sm:text-sm"
+              >
                 {data.content}
               </div>
             </div>
@@ -98,7 +99,8 @@ function YourPosts() {
                 type="primary"
                 className="px-4 py-2 flex items-center justify-evenly sm:px-0 sm:py-0 sm:text-sm "
               >
-                <MdDeleteForever className="text-black w-6 h-6 sm:text-sm" /> Delete
+                <MdDeleteForever className="text-black w-6 h-6 sm:text-sm" />{" "}
+                Delete
               </Button>
             </div>
           </div>
