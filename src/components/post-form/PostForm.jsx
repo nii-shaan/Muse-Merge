@@ -1,14 +1,16 @@
 import React, { useCallback } from "react";
 import { Button } from "antd";
-import { set, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import service from "../../appwrite/config";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { RTE, Select, Input } from "../index";
+import { TextEditor, Select, Input } from "../index";
 import { authService } from "../../appwrite/auth";
 import { useEffect } from "react";
 import { useState } from "react";
+
+import "react-quill/dist/quill.snow.css";
 
 function PostForm({ post }) {
   const [currentUser, setCurrentUser] = useState("");
@@ -61,12 +63,12 @@ function PostForm({ post }) {
         data.featured_image = fileId;
         const dbpost = await service.createPost({
           ...data,
-          userId: userData.$id,
+          user_id: userData.$id,
         });
 
         if (dbpost) {
           toast.success("Upload Sucessfull", { position: "top-center" });
-          // TODO:   navigate(`/post/${dbpost.$id}`); 
+          // TODO:   navigate(`/post/${dbpost.$id}`);
         }
       }
     }
@@ -93,59 +95,82 @@ function PostForm({ post }) {
   return (
     <form
       onSubmit={handleSubmit(submit)}
-      className="flex flex-wrap flex-col items-center justify-center"
+      className="w-full  flex flex-col items-center justify-center "
     >
       <div className="w-full px-2 flex flex-wrap flex-col items-start justify-center">
-        <Input
-          label="Title: "
-          placeholder="Title"
-          className="mb-4"
-          {...register("title", { required: true })}
-        />
-        <Input
-          label="Slug: "
-          placeholder="Slug"
-          className="mb-4"
-          {...register("slug", { required: true })}
-          onInput={(e) => {
-            setValue("slug", slugTransform(e.currentTarget.value), {
-              shouldValidate: true,
-            });
-          }}
-        />
-        <Select
-          options={["active", "inactive"]}
-          label="Status"
-          className="mb-4"
-          {...register("status", { required: true })}
-        />
-        <RTE
+        <div className="w-full  flex justify-center">
+          <div
+            id="inputAndSlug"
+            className="max-w-[500px] px-2 pb-2 w-full flex justify-center items-center  sm:flex-col "
+          >
+            <Input
+              label="Title: "
+              placeholder="Title"
+              className="mb-4"
+              {...register("title", { required: true })}
+            />
+
+            <Input
+              label="Slug: "
+              placeholder="Slug"
+              className="mb-4"
+              {...register("slug", { required: true })}
+              onInput={(e) => {
+                setValue("slug", slugTransform(e.currentTarget.value), {
+                  shouldValidate: true,
+                });
+              }}
+            />
+          </div>
+        </div>
+
+        <div className="w-full flex justify-center sm:justify-start">
+          <Select
+            options={["active", "inactive"]}
+            label="Status"
+            className="mb-4"
+            {...register("status", { required: true })}
+          />
+        </div>
+
+        {/* <RTE
           label="Content :"
           name="content"
           control={control}
           defaultValue={getValues("content")}
-        />
+        /> */}
+        <div className="w-full  flex justify-center">
+          <TextEditor
+            label="Content"
+            name="content"
+            control={control}
+            defaultValue={getValues("content")}
+          />
+        </div>
       </div>
-      <div className="w-1/3 px-2 mt-3">
-        <Input
-          label="Featured Image :"
-          type="file"
-          className="mb-4 w-[200px] text-white"
-          accept="image/png, image/jpg, image/jpeg, image/gif"
-          {...register("image", { required: !post })}
-        />
+      <div className="w-full  flex justify-center">
+        <div className=" w-[50%] h-32 flex flex-col flex-wrap">
+          <Input
+            label="Featured Image :"
+            type="file"
+            className="mb-4 w-[200px] text-white "
+            accept="image/png, image/jpg, image/jpeg, image/gif"
+            {...register("image", { required: !post })}
+          />
 
-        {post && (
-          <div className="w-full mb-4">
-            <img
-              src={service.getFilePreview(post.featured_image)}
-              alt={post.title}
-              className="rounded-lg"
-            />
-          </div>
-        )}
-
-        <Button htmlType="submit" type="primary" className=" h-[30px] w-full ">
+          {post && (
+            <div className="w-full mb-4">
+              <img
+                src={service.getFilePreview(post.featured_image)}
+                alt={post.title}
+                className="rounded-lg"
+              />
+            </div>
+          )}
+        </div>
+      </div>
+      <div className=" w-[250px]">
+        <Button htmlType="submit" type="primary" className=" h-[30px] w-full">
           {post ? "Update" : "Submit"}
         </Button>
       </div>

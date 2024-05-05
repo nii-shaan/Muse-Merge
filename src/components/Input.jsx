@@ -6,7 +6,7 @@ const Input = forwardRef(function Input(
 ) {
   const id = useId();
   return (
-    <div className="w-full h-[50px] text-white flex items-start justify-start py-5 mb-2 mt-5 rounded-lg">
+    <div className="w-full h-[50px] text-white  py-5 mb-2 mt-5 rounded-lg">
       <label htmlFor={id}>{label}</label>
 
       <input

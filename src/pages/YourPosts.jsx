@@ -131,7 +131,7 @@ function YourPosts() {
           <p>Looks like you haven't posted anything yet,</p>
           <Link
             to="/addpost"
-            className="cursor-pointer hover:underline hover:text-blue-400"
+            className="cursor-pointer hover:underline text-blue-400 "
           >
             Click here to post.
           </Link>
