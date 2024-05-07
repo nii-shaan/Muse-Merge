@@ -12,6 +12,7 @@ import { FaRegUserCircle } from "react-icons/fa";
 
 function Home() {
   const [posts, setPosts] = useState([]);
+
   console.log(posts);
 
   useEffect(() => {
@@ -31,38 +32,44 @@ function Home() {
     return (
       <div className="bg-[#151515] w-full min-h-[800px] text-white flex flex-wrap px-5 sm:justify-center">
         {posts.map((post) => (
-          <div
-            key={post.$id}
-            className="bg-[#4D869C] w-72 h-80 mb-10 rounded-xl mx-5 flex flex-col item-center"
-          >
+          <Link to={`/post/${post.$id}`}>
             <div
-              id="title"
-              className="h-[10%]  flex items-center justify-center text-xl font-cursive font-thin text-[#FFF7F1] border-b border-gray-400 mb-2"
+              key={post.$id}
+              className="bg-[#4D869C] w-72 h-80 mb-10 rounded-xl mx-5 flex flex-col item-center"
             >
-              {post.title}
-            </div>
-            <div id="uploadedBy" className="text-sm flex justify-end pr-2 gap-1">
-            <FaRegUserCircle className="h-5 w-5 text-[#B4D4FF]" /><h1 className="inline text-[#C5FF95]">{post.user_mail}</h1>
-            </div>
-
-            <div className="h-[45%] w-full bg-contain bg-no-repeat  rounded-xl flex items-center justify-center border-b-2 border-white pt-2">
               <div
-                id="featuredImage"
-                className="h-full w-[70%] bg-contain bg-no-repeat  rounded-xl  "
-                style={{
-                  backgroundImage: `url("${
-                    service.getFilePreview(post.featured_image).href
-                  }")`,
-                }}
-              ></div>
+                id="title"
+                className="h-[10%]  flex items-center justify-center text-xl font-cursive font-thin text-[#FFF7F1] border-b border-gray-400 mb-2"
+              >
+                {post.title}
+              </div>
+              <div
+                id="uploadedBy"
+                className="text-sm flex justify-end pr-2 gap-1"
+              >
+                <FaRegUserCircle className="h-5 w-5 text-[#B4D4FF]" />
+                <h1 className="inline text-[#C5FF95]">{post.user_mail}</h1>
+              </div>
+
+              <div className="h-[45%] w-full bg-contain bg-no-repeat  rounded-xl flex items-center justify-center border-b-2 border-white pt-2">
+                <div
+                  id="featuredImage"
+                  className="h-full w-[70%] bg-contain bg-no-repeat  rounded-xl  "
+                  style={{
+                    backgroundImage: `url("${
+                      service.getFilePreview(post.featured_image).href
+                    }")`,
+                  }}
+                ></div>
+              </div>
+              <div
+                id="content"
+                className="w-full h-[40%] overflow-y-scroll bg-gray-400 text-sm p-2 text-black"
+              >
+                {ReactHtmlParser(post.content)}
+              </div>
             </div>
-            <div
-              id="content"
-              className="w-full h-[40%] overflow-y-scroll bg-gray-400 text-sm p-2 text-black"
-            >
-              {ReactHtmlParser(post.content)}
-            </div>
-          </div>
+          </Link>
         ))}
       </div>
     );

@@ -51,14 +51,16 @@ function PostForm({ post }) {
 
       if (dbPost) {
         navigate(`/yourposts`);
-        toast.success("Post updated successfully", { position: "top-center" });
+        toast.success("Post updated successfully", { position: "top-center",
+        pauseOnHover: false });
       }
     } else {
       console.log(userData);
       const file = await service.uploadFile(
         data.image[0]
           ? data.image[0]
-          : toast.error("File upload failed", { position: "top-center" })
+          : toast.error("File upload failed", { position: "top-center",
+          pauseOnHover: false })
       );
 
       if (userData) {
@@ -72,12 +74,14 @@ function PostForm({ post }) {
           });
 
           if (dbpost) {
-            toast.success("Upload Sucessfull", { position: "top-center" });
+            toast.success("Upload Sucessfull", { position: "top-center",
+            pauseOnHover: false });
             navigate(`/yourposts`);
           } else {
             toast.error("Error posting, Maybe you wrote more than 255 char?", {
               position: "top-center",
               autoClose: 8000,
+              pauseOnHover: false
             });
           }
         }

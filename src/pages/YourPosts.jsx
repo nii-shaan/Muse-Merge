@@ -22,9 +22,11 @@ function YourPosts() {
     const res = await service.deletePost(slug);
     if (res) {
       setPosts(posts.filter((post) => post.$id !== slug));
-      toast.success("Post deleted successfully", { position: "top-center" });
+      toast.success("Post deleted successfully", { position: "top-center",
+      pauseOnHover: false });
     } else {
-      toast.error("Post deletion failed", { position: "top-center" });
+      toast.error("Post deletion failed", { position: "top-center",
+      pauseOnHover: false });
     }
   };
 
