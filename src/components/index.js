@@ -6,5 +6,4 @@ import RTE from "./RTE";
 import Select from "./Select";
 import TextEditor from "./TextEditor";
 
-
-export { PostForm, Protected, Input, PostCard, RTE, Select,TextEditor };
+export { PostForm, Protected, Input, PostCard, RTE, Select, TextEditor };

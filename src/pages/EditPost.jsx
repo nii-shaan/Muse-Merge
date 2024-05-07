@@ -5,7 +5,6 @@ import { PostForm } from "../components/index";
 import service from "../appwrite/config";
 import { toast } from "react-toastify";
 
-
 function EditPost() {
   const [post, setPost] = useState(null);
   const { slug } = useParams();
@@ -14,7 +13,7 @@ function EditPost() {
   useEffect(() => {
     if (slug) {
       service.getPost(slug).then((post) => {
-        console.log(post);
+        // console.log(post);
         if (post) {
           setPost(post);
         }

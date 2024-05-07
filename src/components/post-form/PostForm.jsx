@@ -14,7 +14,7 @@ import "react-quill/dist/quill.snow.css";
 function PostForm({ post }) {
   const [currentUser, setCurrentUser] = useState("");
   const [userMail, setUserMail] = useState("");
-  console.log(userMail);
+  // console.log(userMail);
 
   useEffect(() => {
     authService.getCurrentUser().then((data) => setCurrentUser(data.$id));
@@ -51,16 +51,20 @@ function PostForm({ post }) {
 
       if (dbPost) {
         navigate(`/yourposts`);
-        toast.success("Post updated successfully", { position: "top-center",
-        pauseOnHover: false });
+        toast.success("Post updated successfully", {
+          position: "top-center",
+          pauseOnHover: false,
+        });
       }
     } else {
       console.log(userData);
       const file = await service.uploadFile(
         data.image[0]
           ? data.image[0]
-          : toast.error("File upload failed", { position: "top-center",
-          pauseOnHover: false })
+          : toast.error("File upload failed", {
+              position: "top-center",
+              pauseOnHover: false,
+            })
       );
 
       if (userData) {
@@ -74,14 +78,16 @@ function PostForm({ post }) {
           });
 
           if (dbpost) {
-            toast.success("Upload Sucessfull", { position: "top-center",
-            pauseOnHover: false });
+            toast.success("Upload Sucessfull", {
+              position: "top-center",
+              pauseOnHover: false,
+            });
             navigate(`/yourposts`);
           } else {
             toast.error("Error posting, Maybe you wrote more than 255 char?", {
               position: "top-center",
               autoClose: 8000,
-              pauseOnHover: false
+              pauseOnHover: false,
             });
           }
         }

@@ -95,7 +95,8 @@ function Signup() {
                           matchPattern: (value) =>
                             /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/.test(
                               value
-                            ) || toast.error("Invalid email address!", {
+                            ) ||
+                            toast.error("Invalid email address!", {
                               position: "top-center",
                               autoClose: 4000,
                               pauseOnHover: false,

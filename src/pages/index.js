@@ -1,5 +1,5 @@
 import Addpost from "./AddPost";
-import YourPosts from "./YourPosts"
+import YourPosts from "./YourPosts";
 import Login from "./Login";
 import Signup from "./Signup";
 import Home from "./Home";
@@ -7,10 +7,8 @@ import Loader from "./Loader";
 import Header from "./header/Header";
 import Footer from "./footer/Footer";
 import Logout from "./header/Logout";
-import Post from "./Post";  
+import Post from "./Post";
 import EditPost from "./EditPost";
-
-
 
 export {
   Addpost,
@@ -23,5 +21,5 @@ export {
   Footer,
   Logout,
   Post,
-  EditPost
+  EditPost,
 };

@@ -13,7 +13,7 @@ function TextEditor({ name, control, label, defaultValue = "" }) {
         render={({ field: { onChange } }) => (
           <ReactQuill
             theme="snow"
-            defaultValue={defaultValue}   
+            defaultValue={defaultValue}
             onChange={onChange}
           />
         )}

@@ -13,13 +13,13 @@ import { FaRegUserCircle } from "react-icons/fa";
 function Home() {
   const [posts, setPosts] = useState([]);
 
-  console.log(posts);
+  // console.log(posts);
 
   useEffect(() => {
     service.getPosts().then((posts) => {
       if (posts) {
         setPosts(posts.documents);
-        console.log(posts);
+        // console.log(posts);
       }
     });
   }, []);

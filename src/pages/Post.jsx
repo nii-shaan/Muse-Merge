@@ -58,7 +58,7 @@ function Post() {
         </div>
       </div>
       <Link to="/">
-      <Button className="mt-5">Go Back</Button>
+        <Button className="mt-5">Go Back</Button>
       </Link>
     </div>
   ) : null;

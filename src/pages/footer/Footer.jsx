@@ -5,7 +5,7 @@ import { FaXTwitter } from "react-icons/fa6";
 
 function Footer() {
   const year = new Date().getFullYear();
-  // console.log(year);
+  console.log(year);
 
   return (
     <footer className="bg-[#3D3C42] h-[350px] w-full">
@@ -15,7 +15,9 @@ function Footer() {
           className="w-[30%] flex items-center flex-col justify-start pt-8 sm:text-[12px]"
         >
           <ul>
-            <h1 className="font-bold text-xl mb-5 font-cursive sm:text-lg">ABOUT</h1>
+            <h1 className="font-bold text-xl mb-5 font-cursive sm:text-lg">
+              ABOUT
+            </h1>
             <li className="cursor-pointer hover:text-gray-400 hover:underline">
               About Us
             </li>
@@ -35,7 +37,9 @@ function Footer() {
           className="  w-[30%] flex items-center flex-col justify-start pt-8 sm:text-[12px]"
         >
           <ul>
-            <h1 className="font-bold text-xl mb-5 font-cursive sm:text-lg">HELP</h1>
+            <h1 className="font-bold text-xl mb-5 font-cursive sm:text-lg">
+              HELP
+            </h1>
 
             <li className="cursor-pointer hover:text-gray-400 hover:underline">
               Help Center
@@ -52,7 +56,9 @@ function Footer() {
           id="connect"
           className=" w-[30%] flex items-center flex-col justify-start pt-8"
         >
-          <h1 className="font-bold text-xl mb-5 font-cursive sm:text-lg">CONNECT</h1>
+          <h1 className="font-bold text-xl mb-5 font-cursive sm:text-lg">
+            CONNECT
+          </h1>
           <ul className="flex gap-2 flex-col sm:text-[12px]">
             <li className="flex cursor-pointer hover:text-gray-400 hover:underline">
               {" "}
@@ -105,7 +111,6 @@ function Footer() {
             Muse Merge
           </Link>
         </div>
-       
       </div>
     </footer>
   );

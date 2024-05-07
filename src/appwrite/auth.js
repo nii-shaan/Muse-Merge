@@ -28,7 +28,7 @@ class AuthService {
         return false;
       }
     } catch (error) {
-      return {message:error.message,status:false}
+      return { message: error.message, status: false };
     }
   }
 
