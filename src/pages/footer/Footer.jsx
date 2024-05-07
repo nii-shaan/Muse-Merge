@@ -12,10 +12,10 @@ function Footer() {
       <div className="h-[55%] w-full  flex justify-evenly text-white text-sm border-b ">
         <div
           id="about"
-          className="w-[30%] flex items-center flex-col justify-start pt-8"
+          className="w-[30%] flex items-center flex-col justify-start pt-8 sm:text-[12px]"
         >
           <ul>
-            <h1 className="font-bold text-xl mb-5 font-cursive">ABOUT</h1>
+            <h1 className="font-bold text-xl mb-5 font-cursive sm:text-lg">ABOUT</h1>
             <li className="cursor-pointer hover:text-gray-400 hover:underline">
               About Us
             </li>
@@ -32,10 +32,10 @@ function Footer() {
         </div>
         <div
           id="help"
-          className="  w-[30%] flex items-center flex-col justify-start pt-8"
+          className="  w-[30%] flex items-center flex-col justify-start pt-8 sm:text-[12px]"
         >
           <ul>
-            <h1 className="font-bold text-xl mb-5 font-cursive">HELP</h1>
+            <h1 className="font-bold text-xl mb-5 font-cursive sm:text-lg">HELP</h1>
 
             <li className="cursor-pointer hover:text-gray-400 hover:underline">
               Help Center
@@ -52,8 +52,8 @@ function Footer() {
           id="connect"
           className=" w-[30%] flex items-center flex-col justify-start pt-8"
         >
-          <h1 className="font-bold text-xl mb-5 font-cursive">CONNECT</h1>
-          <ul className="flex gap-2 flex-col">
+          <h1 className="font-bold text-xl mb-5 font-cursive sm:text-lg">CONNECT</h1>
+          <ul className="flex gap-2 flex-col sm:text-[12px]">
             <li className="flex cursor-pointer hover:text-gray-400 hover:underline">
               {" "}
               <CiFacebook className="h-5 w-5 mr-2" /> Facebook
@@ -97,15 +97,15 @@ function Footer() {
               </button>
             </Link>
           </section>
-          <p className="ml-5">Made by Nishan</p>
+          <p className="ml-5 sm:text-[10px]">Made by Nishan</p>
         </div>
-        <div className=" w-[30%] h-full flex items-center justify-center text-xl text-[#efeeee] font-cursive">
+        <div className=" w-[65%] h-full flex items-center justify-center text-xl text-[#efeeee] font-cursive sm:text-[10px]">
           2024-{year} <p className="ml-4 mr-1 mt-2">©</p>{" "}
           <Link to="/" className="hover:underline">
             Muse Merge
           </Link>
         </div>
-        <div className=" w-[35%] h-full"></div>
+       
       </div>
     </footer>
   );
