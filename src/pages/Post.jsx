@@ -47,7 +47,7 @@ function Post() {
           </div>
           <div
             id="postDetails"
-            className="flex justify-evenly h-8 items-center mt-3 "
+            className="flex justify-evenly h-8 items-center mt-3  sm:text-[10px]"
           >
             <p>Uploaded by: {post.user_mail}</p>
             <p>Posted on: {post.$createdAt.slice(0, 10)}</p>
