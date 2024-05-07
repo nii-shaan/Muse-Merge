@@ -82,7 +82,10 @@ function PostForm({ post }) {
           }
         }
       } else {
-        toast.error("Failed to get user data, please refresh the page");
+        toast.error("Failed to get user data, please refresh the page", {
+          position: "top-center",
+          pauseOnHover: false,
+        });
       }
     }
   };
